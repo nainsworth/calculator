@@ -31,12 +31,17 @@ button {
   border: 1px solid black;
 }
 
-.stored-output {
+#stored-output {
   height: 75px;
 }
 
-.result-output {
+#result-output {
   height: 75px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 67px;
+  font-family: "ZCOOL QingKe HuangYou";
 }
 
 .row-one,
@@ -100,5 +105,5 @@ button {
 }
 
 footer {
-  font-size: 12px;
+  font-size: 14px;
 }

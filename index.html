@@ -9,24 +9,24 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora&family=ZCOOL+QingKe+HuangYou&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./script.js" defer></script>
     <title>Calculator</title>
   </head>
   <body>
     <div class="title"></div>
     <div class="calculator">
-      <div class="display">
-        <div class="stored-output"></div>
-        <div class="result-output"></div>
+      <div class="display" id="display">
+        <div id="stored-output"></div>
+        <div id="result-output"></div>
       </div>
       <div class="buttons">
         <!-- Row 1 -->
         <div class="row-one">
-          <button class="special">AC</button>
+          <button class="special" onclick="clearCalc()">AC</button>
           <button class="special material-icons">backspace</button>
           <button class="special">%</button>
           <button class="operators">÷</button>
@@ -34,33 +34,33 @@
 
         <!-- Row 2 -->
         <div class="row-two">
-          <button class="number" value="7">7</button>
-          <button class="number" value="8">8</button>
-          <button class="number" value="9">9</button>
+          <button class="number" value="7" onclick="displaySelectedNumber(7)">7</button>
+          <button class="number" value="8" onclick="displaySelectedNumber(8)">8</button>
+          <button class="number" value="9" onclick="displaySelectedNumber(9)">9</button>
           <button class="operators">×</button>
         </div>
 
         <!-- Row 3 -->
         <div class="row-three">
-          <button class="number" value="4">4</button>
-          <button class="number" value="5">5</button>
-          <button class="number" value="6">6</button>
+          <button class="number" value="4" onclick="displaySelectedNumber(4)">4</button>
+          <button class="number" value="5" onclick="displaySelectedNumber(5)">5</button>
+          <button class="number" value="6" onclick="displaySelectedNumber(6)">6</button>
           <button class="operators">-</button>
         </div>
 
         <!-- Row 4 -->
         <div class="row-four">
-          <button class="number" value="1">1</button>
-          <button class="number" value="2">2</button>
-          <button class="number" value="3">3</button>
+          <button class="number" value="1" onclick="displaySelectedNumber(1)">1</button>
+          <button class="number" value="2" onclick="displaySelectedNumber(2)">2</button>
+          <button class="number" value="3" onclick="displaySelectedNumber(3)">3</button>
           <button class="operators">+</button>
         </div>
 
         <!-- Row 5 -->
         <div class="row-five">
           <button class="number">+/-</button>
-          <button class="number" value="0">0</button>
-          <button class="number" value=".">.</button>
+          <button class="number" value="0" onclick="displaySelectedNumber(0)">0</button>
+          <button class="number" value="." onclick="displaySelectedNumber('.')">.</button>
           <button class="operators">=</button>
         </div>
       </div>
