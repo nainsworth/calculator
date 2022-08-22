@@ -1,6 +1,7 @@
 const storedOutput = document.getElementById("stored-output");
 const resultOutput = document.getElementById("result-output");
-let total = 0;
+// let input = 0;
+// let total = 0;
 
 window.onload = function () {
   displaySelectedNumber(0);
@@ -14,18 +15,22 @@ function clearCalc() {
   resultOutput.innerText = 0;
 }
 
-function add(num1, num2) {
-total = num1 + num2;
-}
+// function add(input, num) {
+// total = input + num;
+// resultOutput.innerText = total;
+// }
 
-function subtract(num1, num2) {
-total = num1 - num2;
-}
+// function subtract(input, num) {
+// total = input - num;
+// resultOutput.innerText = total;
+// }
 
-function multiply(num1, num2) {
-total = num1 * num2;
-}
+// function multiply(input, num) {
+// total = input * num;
+// resultOutput.innerText = total;
+// }
 
-function divide() {
-total = num1 / num2;
-}
+// function divide(input, num) {
+// total = input / num;
+// resultOutput.innerText = total;
+// }
