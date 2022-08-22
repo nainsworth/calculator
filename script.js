@@ -2,17 +2,22 @@ const storedOutput = document.getElementById("stored-output");
 const resultOutput = document.getElementById("result-output");
 // let input = 0;
 // let total = 0;
+let blankCalc = 0
+let input = "";
+
 
 window.onload = function () {
-  displaySelectedNumber(0);
+  resultOutput.innerText = 0;
 };
 
 function displaySelectedNumber(num) {
-  resultOutput.innerText += num;
+   input += num;
+   resultOutput.innerText = input;
 }
 
 function clearCalc() {
   resultOutput.innerText = 0;
+  input = "";
 }
 
 // function add(input, num) {
