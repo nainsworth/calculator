@@ -34,7 +34,7 @@ button {
 .previous-output {
   height: 50px;
   font-size: 30px;
-  padding: 10px;
+  padding: 10px 5px;
   font-family: "ZCOOL QingKe HuangYou";
   display: flex;
   justify-content: flex-end;
