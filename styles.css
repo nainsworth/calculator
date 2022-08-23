@@ -25,23 +25,30 @@ button {
 }
 
 .display {
-  height: 150px;
+  height: 130px;
   width: 320px;
   background-color: rgb(246, 246, 246);
   border: 1px solid black;
 }
 
-#stored-output {
-  height: 75px;
-}
-
-#result-output {
-  height: 75px;
+#previous-output {
+  height: 50px;
+  font-size: 30px;
+  padding: 10px;
+  font-family: "ZCOOL QingKe HuangYou";
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+}
+
+
+
+#current-output {
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
   font-size: 67px;
   font-family: "ZCOOL QingKe HuangYou";
+  padding: 10px;
 }
 
 .row-one,

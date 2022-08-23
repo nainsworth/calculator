@@ -1,5 +1,5 @@
-const storedOutput = document.getElementById("stored-output");
-const resultOutput = document.getElementById("result-output");
+const previousOutput = document.getElementById("previous-output");
+const currentOutput = document.getElementById("current-output");
 // let input = 0;
 // let total = 0;
 let blankCalc = 0
@@ -7,16 +7,16 @@ let input = "";
 
 
 window.onload = function () {
-  resultOutput.innerText = 0;
+  currentOutput.innerText = 0;
 };
 
 function displaySelectedNumber(num) {
    input += num;
-   resultOutput.innerText = input;
+   currentOutput.innerText = input;
 }
 
 function clearCalc() {
-  resultOutput.innerText = 0;
+  currentOutput.innerText = 0;
   input = "";
 }
 
