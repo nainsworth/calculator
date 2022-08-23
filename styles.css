@@ -46,8 +46,7 @@ button {
   justify-content: flex-end;
   font-size: 67px;
   font-family: "ZCOOL QingKe HuangYou";
-  padding: 10px;
-  word-break: break-all;
+  padding: 10px 5px;
 }
 
 .row-one,
