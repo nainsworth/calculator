@@ -15,7 +15,7 @@ function operate(choice) {
   if (previousTxtElem.innerText !== "") {
     compute();
   }
-  this.choice = choice;
+  operation = choice;
   previousTxtElem.innerText = currentTxtElem.innerText;
   currentTxtElem.innerText = 0;
   input = "";
@@ -30,15 +30,15 @@ function appendNumber(num) {
 }
 
 function add(prev, curr) {
-  return prev + curr
+  return prev + curr;
 }
 
 function subtract(prev, curr) {
-  return prev - curr
+  return prev - curr;
 }
 
 function multiply(prev, curr) {
-  return prev * curr
+  return prev * curr;
 }
 
 function divide(prev, curr) {
@@ -47,14 +47,24 @@ function divide(prev, curr) {
     previousTxtElem.innerText = "";
     input = "";
   }
-  return prev / curr
+  return prev / curr;
 }
 
 function compute() {
   const prev = parseFloat(previousTxtElem.innerText);
   const curr = parseFloat(currentTxtElem.innerText);
 
-  if (operation === "+"){}
+  if (operation === "+") {
+    previousTxtElem.innerText = add(prev, curr);
+  } else if (operation === "-") {
+    previousTxtElem.innerText = subtract(prev, curr);
+  } else if (operation === "x") {
+    previousTxtElem.innerText = multiply(prev, curr);
+  } else if (operation === "÷") {
+    previousTxtElem.innerText = divide(prev, curr);
+  } else {
+    previousTxtElem.innerText = "ERROR";
+  }
 }
 
 const numberBtns = document.querySelectorAll("[data-number]");
