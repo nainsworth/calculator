@@ -16,8 +16,8 @@ function operate(choice) {
     compute();
   }
   operation = choice;
-  previousTxtElem.innerText = currentTxtElem.innerText;
-  currentTxtElem.innerText = 0;
+  previousTxtElem.innerText = `${currentTxtElem.innerText} ${choice}`;
+  currentTxtElem.innerText = "";
   input = "";
 }
 
@@ -25,6 +25,7 @@ function operate(choice) {
 function appendNumber(num) {
   if (num === "." && currentTxtElem.innerText.includes(".")) return;
   if (currentTxtElem.innerText.length > 8) return;
+  
   input += num;
   currentTxtElem.innerText = input;
 }
@@ -42,10 +43,11 @@ function multiply(prev, curr) {
 }
 
 function divide(prev, curr) {
-  if (curr === "0") {
+  if (curr === 0) {
     currentTxtElem.innerText = "NOPE";
     previousTxtElem.innerText = "";
     input = "";
+    return;
   }
   return prev / curr;
 }
@@ -53,18 +55,48 @@ function divide(prev, curr) {
 function compute() {
   const prev = parseFloat(previousTxtElem.innerText);
   const curr = parseFloat(currentTxtElem.innerText);
-
+  if (isNaN(prev)) return;
   if (operation === "+") {
-    previousTxtElem.innerText = add(prev, curr);
+    input = add(prev, curr);
+    operation = undefined;
   } else if (operation === "-") {
-    previousTxtElem.innerText = subtract(prev, curr);
+    input = subtract(prev, curr);
+    operation = undefined;
   } else if (operation === "x") {
-    previousTxtElem.innerText = multiply(prev, curr);
+    input = multiply(prev, curr);
+    operation = undefined;
   } else if (operation === "÷") {
-    previousTxtElem.innerText = divide(prev, curr);
+    input = divide(prev, curr);
+    operation = undefined;
   } else {
-    previousTxtElem.innerText = "ERROR";
+    return;
   }
+
+  currentTxtElem.innerText = input.toString().substring(0, 8);
+  previousTxtElem.innerText = "";
+
+  if (previousTxtElem.innerText === "" && operation === undefined && inverseBtn.clicked === false && percentBtn.clicked === false) {
+    input = "";
+  }
+}
+
+function backspace() {
+  input = input.toString().slice(0, -1);
+  if (input === "") {
+    currentTxtElem.innerText = 0;
+  } else {
+    currentTxtElem.innerText = input;
+  }
+}
+
+function percent() {
+  input = input * .01;
+  currentTxtElem.innerText = input;
+}
+
+function inverse() {
+  input = input * -1;
+  currentTxtElem.innerText = input;
 }
 
 const numberBtns = document.querySelectorAll("[data-number]");
@@ -101,57 +133,14 @@ clearBtn.addEventListener("click", (button) => {
   clear();
 });
 
-// // let input = 0;
-// // let total = 0;
-// let blankCalc = 0
-// let input = "";
+deleteBtn.addEventListener("click", (button) => {
+  backspace();
+});
 
-// window.onload = function () {
-//   currentOutput.innerText = 0;
-// };
+percentBtn.addEventListener("click", (button) => {
+  percent();
+});
 
-// function displaySelectedNumber(num) {
-//    input += num;
-//    currentOutput.innerText = input;
-// }
-
-// function clearCalc() {
-//   currentOutput.innerText = 0;
-//   input = "";
-// }
-
-// function add(num1, num2) {
-//   return num1 + num2;
-// }
-
-// function subtract(num1, num2) {
-//   return num1 - num2;
-// }
-
-// function multiply(num1, num2) {
-//   return num1 * num2;
-// }
-
-// function divide(num1, num2) {
-//   return num1 / num2;
-// }
-
-// // function add(input, num) {
-// // total = input + num;
-// // resultOutput.innerText = total;
-// // }
-
-// // function subtract(input, num) {
-// // total = input - num;
-// // resultOutput.innerText = total;
-// // }
-
-// // function multiply(input, num) {
-// // total = input * num;
-// // resultOutput.innerText = total;
-// // }
-
-// // function divide(input, num) {
-// // total = input / num;
-// // resultOutput.innerText = total;
-// // }
+inverseBtn.addEventListener("click", (button) => {
+  inverse();
+});
