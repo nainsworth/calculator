@@ -26,9 +26,9 @@ function operate(choice) {
 function appendNumber(num) {
   if (num === "." && currentTxtElem.innerText.includes(".")) return;
   if (currentTxtElem.innerText.length > 8) return;
-  
+
   input += num;
-  currentTxtElem.innerText = input;
+  currentTxtElem.innerText = input.toString().substring(0, 8);
 }
 
 // Add Function
@@ -61,7 +61,7 @@ function divide(prev, curr) {
 function compute() {
   const prev = parseFloat(previousTxtElem.innerText);
   const curr = parseFloat(currentTxtElem.innerText);
-  if (isNaN(prev)) return;
+  if (isNaN(prev) || isNaN(curr)) return;
   if (operation === "+") {
     input = add(prev, curr);
     operation = undefined;
@@ -98,14 +98,47 @@ function backspace() {
 
 // Converts number to a percentage
 function percent() {
-  input = input * .01;
-  currentTxtElem.innerText = input;
+  input = input * 0.01;
+  currentTxtElem.innerText = input.toString().substring(0, 8);
+  percentBtn.clicked = false;
 }
 
 // Converts number to its inverse
 function inverse() {
   input = input * -1;
-  currentTxtElem.innerText = input;
+  currentTxtElem.innerText = input.toString().substring(0, 8);
+  inverseBtn.clicked = false;
+}
+
+// Function to handle keypress
+function keypress(e) {
+  if ((e.key >= 0 && e.key <= 9) || e.key === ".") {
+    appendNumber(e.key);
+  }
+  if (e.key === "Enter" || (e.key === "=")) {
+    compute(e.key);
+  }
+  if (e.key === "+" || e.key === "-") {
+    operate(e.key);
+  }
+  if (e.key === "*") {
+    operate("x")
+  }
+  if (e.key === "/") {
+    operate("÷")
+  }
+  if (e.key === "Backspace") {
+    backspace();
+  }
+  if (e.key === "Delete") {
+    clear();
+  }
+  if (e.key === "`") {
+    inverse();
+  }
+  if (e.key === "%") {
+    percent();
+  }
 }
 
 // Variables
@@ -135,23 +168,12 @@ operatorBtns.forEach((button) => {
   });
 });
 
-// Event lister for other buttons 
-equalsBtn.addEventListener("click", (button) => {
-  compute();
-});
+// Event lister for other buttons
+equalsBtn.addEventListener("click", compute);
+clearBtn.addEventListener("click", clear);
+deleteBtn.addEventListener("click", backspace);
+percentBtn.addEventListener("click", percent);
+inverseBtn.addEventListener("click", inverse);
 
-clearBtn.addEventListener("click", (button) => {
-  clear();
-});
-
-deleteBtn.addEventListener("click", (button) => {
-  backspace();
-});
-
-percentBtn.addEventListener("click", (button) => {
-  percent();
-});
-
-inverseBtn.addEventListener("click", (button) => {
-  inverse();
-});
+// Keypress Event listener
+window.addEventListener("keydown", keypress);
