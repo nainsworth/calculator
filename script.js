@@ -81,7 +81,7 @@ function compute() {
   currentTxtElem.innerText = input.toString().substring(0, 8);
   previousTxtElem.innerText = "";
 
-  if (previousTxtElem.innerText === "" && operation === undefined && inverseBtn.clicked === false && percentBtn.clicked === false) {
+  if (previousTxtElem.innerText === "" && operation === undefined && inverseBtn.clicked === undefined && percentBtn.clicked === undefined) {
     input = "";
   }
 }
