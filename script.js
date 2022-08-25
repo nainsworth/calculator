@@ -11,6 +11,7 @@ function clear() {
   operation = undefined;
 }
 
+// Chooses operator
 function operate(choice) {
   if (previousTxtElem.innerText !== "") {
     compute();
@@ -30,18 +31,22 @@ function appendNumber(num) {
   currentTxtElem.innerText = input;
 }
 
+// Add Function
 function add(prev, curr) {
   return prev + curr;
 }
 
+// Subtract Function
 function subtract(prev, curr) {
   return prev - curr;
 }
 
+// Multiply Function
 function multiply(prev, curr) {
   return prev * curr;
 }
 
+// Divide Function
 function divide(prev, curr) {
   if (curr === 0) {
     currentTxtElem.innerText = "NOPE";
@@ -52,6 +57,7 @@ function divide(prev, curr) {
   return prev / curr;
 }
 
+// Computes the chosen equation in the calculator
 function compute() {
   const prev = parseFloat(previousTxtElem.innerText);
   const curr = parseFloat(currentTxtElem.innerText);
@@ -80,6 +86,7 @@ function compute() {
   }
 }
 
+// Backspace function
 function backspace() {
   input = input.toString().slice(0, -1);
   if (input === "") {
@@ -89,16 +96,19 @@ function backspace() {
   }
 }
 
+// Converts number to a percentage
 function percent() {
   input = input * .01;
   currentTxtElem.innerText = input;
 }
 
+// Converts number to its inverse
 function inverse() {
   input = input * -1;
   currentTxtElem.innerText = input;
 }
 
+// Variables
 const numberBtns = document.querySelectorAll("[data-number]");
 const operatorBtns = document.querySelectorAll("[data-operator]");
 const equalsBtn = document.querySelector("[data-equals]");
@@ -125,6 +135,7 @@ operatorBtns.forEach((button) => {
   });
 });
 
+// Event lister for other buttons 
 equalsBtn.addEventListener("click", (button) => {
   compute();
 });
