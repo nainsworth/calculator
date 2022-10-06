@@ -10,4 +10,4 @@ The project is to challenge and display my knowledge in Javascript. This is the 
 * Javascript
 
 ## Live Post
-[Calculator Web Link](https://meta-n1ck.github.io/calculator/)
+[Calculator Web Link](https://nainsworth.github.io/calculator/)
